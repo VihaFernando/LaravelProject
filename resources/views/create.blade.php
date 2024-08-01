@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin')
 
 @section('content')
     <h1>Add New Product</h1>
