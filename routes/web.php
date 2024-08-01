@@ -23,3 +23,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(
 Route::get('/admin', function () {
     return view('admin');
 })->middleware('auth');
+
+Route::get('/products', function () {
+    return view('createproducts');
+});
