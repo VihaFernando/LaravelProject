@@ -11,7 +11,7 @@
 
     <a href="{{ route('products.create') }}" class="btn btn-primary">Add New Product</a>
 
-    <table>
+    <table class="table table-striped mt-3">
         <thead>
             <tr>
                 <th>Name</th>
@@ -27,11 +27,14 @@
                     <td>${{ $product->price }}</td>
                     <td>{{ $product->description }}</td>
                     <td>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
+                        <!-- Edit Button -->
+                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                        <!-- Delete Form -->
                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
                 </tr>

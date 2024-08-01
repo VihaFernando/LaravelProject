@@ -20,15 +20,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'nullable|string',
-        ]);
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'description' => 'nullable|string',
+            ]);
 
-        Product::create($validated);
+            Product::create($validated);
 
-        return redirect()->route('products.index')->with('success', 'Product added successfully.');
+            return redirect()->route('products.index')->with('success', 'Product added successfully.');
+        } catch (\Exception $e) {
+            // Handle exception
+            return redirect()->back()->withErrors(['error' => 'Failed to add product.']);
+        }
     }
 
     /**
@@ -53,15 +58,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'nullable|string',
-        ]);
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'description' => 'nullable|string',
+            ]);
 
-        $product->update($validated);
+            $product->update($validated);
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+            return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        } catch (\Exception $e) {
+            // Handle exception
+            return redirect()->back()->withErrors(['error' => 'Failed to update product.']);
+        }
     }
 
     /**
@@ -69,8 +79,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        try {
+            $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+            return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        } catch (\Exception $e) {
+            // Handle exception
+            return redirect()->back()->withErrors(['error' => 'Failed to delete product.']);
+        }
     }
 }
