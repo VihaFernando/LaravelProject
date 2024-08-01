@@ -47,6 +47,12 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Products</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Add Products</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
