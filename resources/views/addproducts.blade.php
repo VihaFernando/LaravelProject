@@ -13,9 +13,6 @@
         <label for="description">Description:</label>
         <textarea id="description" name="description"></textarea>
         
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image">
-        
         <button type="submit">Add Product</button>
     </form>
 @endsection
