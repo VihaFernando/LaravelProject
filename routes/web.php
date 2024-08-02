@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 // Redirect unauthenticated users to login or authenticated users to admin dashboard
 Route::get('/', function () {
@@ -33,4 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::resource('categories', CategoryController::class)->middleware('auth');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::resource('categories', CategoryController::class);
 });
