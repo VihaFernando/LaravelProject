@@ -26,11 +26,11 @@ Route::get('/admin', function () {
 })->middleware('auth');
 
 // Product routes with authentication middleware
-Route::middleware('auth')->group(function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index'); // List products
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create'); // Show form to add new product
-    Route::post('/products', [ProductController::class, 'store'])->name('products.store'); // Store new product
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit'); // Show form to edit product
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update'); // Update product
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy'); // Delete product
+Route::middleware(['auth'])->group(function () {
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
