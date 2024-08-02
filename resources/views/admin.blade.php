@@ -53,6 +53,12 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('products.create') }}" class="nav-link">Add Product</a>
         </li>
+      <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="{{ route('categories.create') }}">Add Category</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
